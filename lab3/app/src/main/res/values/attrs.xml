@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TimeView">
+        <attr name="timeTitle" format="string" />
+        <attr name="setColor" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="InteractiveSearcher">
+        <attr name="numAlternatives" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="MyList">
+        <attr name="numAlt" format="integer" />
+    </declare-styleable>
+</resources>
