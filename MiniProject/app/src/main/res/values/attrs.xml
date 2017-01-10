@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Carousel">
+        <attr name="heightOfItem" format="integer"/>
+        <attr name="paddingBetweenItems" format="integer"/>
+        <!--<attr name="useSwipe" format="boolean"/>
+        <attr name="useLoop" format="boolean"/>-->
+    </declare-styleable>
+    <declare-styleable name="Progress">
+        <attr name="numSteps" format="integer" />
+        <attr name="current" format="integer"/>
+        <attr name="textSize" format="integer"/>
+        <attr name="itemName" format="string"/>
+        <attr name="showProgressText" format="boolean"/>
+        <attr name="barHeight" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="ProgressBar">
+    </declare-styleable>
+</resources>
