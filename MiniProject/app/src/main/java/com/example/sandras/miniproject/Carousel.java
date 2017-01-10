@@ -17,7 +17,14 @@ import android.widget.TextView;
 
 public class Carousel extends ViewGroup {
 
+    /*
+     * A listener for when an image is selected
+     */
     public interface OnSelectListener {
+        /*
+         * Called when an image is selected
+         * Should be overrode
+         */
         void onSelect(int i);
     }
 
@@ -25,6 +32,7 @@ public class Carousel extends ViewGroup {
     private Context cont;
     private int deviceWidth;
     private RelativeLayout List;
+
 
     private int imageWidth = 300;
     private int imageHeight = 300;
@@ -74,10 +82,17 @@ public class Carousel extends ViewGroup {
         init(context);
     }
 
+    /*
+     * @param listener The OnSelectListener to be set to this Carousel
+     */
     public void setOnSelectListener(OnSelectListener listener){
         mOnSelectListener = listener;
     }
 
+    /*
+     * Sets a new selected value and calls the onSelect function if there is a OnSelectListener
+     * @param i The index of the image that is selected
+     */
     private void select(int i) {
         selected = i;
         if(mOnSelectListener != null) {
@@ -85,6 +100,11 @@ public class Carousel extends ViewGroup {
         }
     }
 
+    /*
+     * Initializes variables
+     * Sets an OnTouchListener to the list
+     * @param context The context of the activity
+     */
     private void init(Context context) {
         cont = context;
         inflate(context, R.layout.carousel, this);
@@ -147,6 +167,10 @@ public class Carousel extends ViewGroup {
         });
     }
 
+    /*
+     * Moves the images along the x-axis
+     * @param moveX The distance and direction that the images should move
+     */
     private void moveList(int moveX){
         //for every image
         for(int i = 0; i < List.getChildCount(); i++)
@@ -166,6 +190,11 @@ public class Carousel extends ViewGroup {
         }
     }
 
+    /*
+     * Takes in a position on the screen and finds the image that is places at that position
+     * @param xPos The position along the x-axis
+     * @return The index of the image at xPos
+     */
     private int findSelected(float xPos){
         int pos = (-displacement + (int) xPos) % fullListWidth;
         if(pos <= 0)
@@ -174,6 +203,10 @@ public class Carousel extends ViewGroup {
             return pos / (imageWidth + paddingBetweenImages);
     }
 
+    /*
+     * Adds an ImageView to the Carousel
+     * @param drawable The identifier of the image to be added
+     */
     public void addToList(int drawable)
     {
         ImageView im = new ImageView(cont);
@@ -187,6 +220,10 @@ public class Carousel extends ViewGroup {
         fullListWidth += imageWidth + paddingBetweenImages;
     }
 
+    /*
+     * removes and image from the Carousel
+     * @param position The index of the image to be removed
+     */
     public void removeFromList(int position){
         for(int i = position; i < List.getChildCount(); i++){
             ImageView im = (ImageView) List.getChildAt(i);
@@ -199,14 +236,27 @@ public class Carousel extends ViewGroup {
         fullListWidth = (imageWidth + paddingBetweenImages) * List.getChildCount();
     }
 
-    //returns the currently selected image's position in the list
+    /*
+     * @return The currently selected image's position in the list
+     */
     public int getSelected(){
         return selected;
     }
 
+    /*
+     * @return The number of images in the carousel
+     */
     public int getNumOfItems() { return List.getChildCount(); }
 
+    /*
+     * @return The height of the images
+     */
     public int getImageHeight() { return imageHeight; }
+
+    /*
+     * Sets a new height to the images and updates the view
+     * @param newHeight The new image height
+     */
     public void setImageHeight(int newHeight){
         imageWidth = newHeight;
         imageHeight = newHeight;
@@ -221,7 +271,15 @@ public class Carousel extends ViewGroup {
         fullListWidth = (imageWidth + paddingBetweenImages) * List.getChildCount();
     }
 
+    /*
+     * @return The padding between the images
+     */
     public int getImagePadding() { return paddingBetweenImages; }
+
+    /*
+     * Sets a new padding between the images and updates the view
+     * @param newPadding The new padding
+     */
     public void setImagePadding(int newPadding){
         paddingBetweenImages = newPadding;
         for(int i = 0; i < List.getChildCount(); i++){

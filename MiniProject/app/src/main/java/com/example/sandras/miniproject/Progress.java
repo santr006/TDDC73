@@ -94,7 +94,15 @@ public class Progress extends ViewGroup {
         p.activate();
     }
 
+    /*
+     * @return The number of steps in the progress bar
+     */
     public int getNumOfSteps() { return steps; }
+
+    /*
+     * Set the number of steps of the full progress
+     * @param newSteps The amount of steps
+     */
     public void setNumOfSteps(int newSteps) {
         steps = newSteps;
         p.steps = steps;
@@ -103,7 +111,15 @@ public class Progress extends ViewGroup {
             info.setText("" + current + " out of " + steps + " " + itemName);
     }
 
+    /*
+     * @return The current progress
+     */
     public int getCurrent() {return current;}
+
+    /*
+     * Sets the current progress done and updates the view
+     * @param newCurrent The amount of progress done
+     */
     public void setCurrent(int newCurrent){
         if(newCurrent <= steps)
             current = newCurrent;
@@ -115,7 +131,15 @@ public class Progress extends ViewGroup {
         p.invalidate();
     }
 
+    /*
+     * @return The size of the text
+     */
     public int getTextSize() { return textSize; }
+
+    /*
+     * Sets the size of the text and update it
+     * @param newTextSize The new size of the text
+     */
     public void setTextSize(int newTextSize) {
         textSize = newTextSize;
         info.setTextSize(textSize);
@@ -123,14 +147,31 @@ public class Progress extends ViewGroup {
             info.setText("" + current + " out of " + steps + " " + itemName);
     }
 
+    /*
+     * @return The name of th items in the progress
+     */
     public String getItemName() { return itemName; }
+
+    /*
+     * Set the name of the items in the progress
+     * Should be in plural
+     * @param newItemName The new name of the items
+     */
     public void setItemName(String newIitemName) {
         itemName = newIitemName;
         if(showText)
             info.setText("" + current + " out of " + steps + " " + itemName);
     }
 
+    /*
+     * @return True if text is shown, otherwise false
+     */
     public boolean getShowText() { return showText; }
+
+    /*
+     * Sets if the text explaining the progress should be shown or not and updates the view
+     * @param newShowText True if text should be shown, else false
+     */
     public void setShowText(boolean newShowText) {
         showText = newShowText;
         if(showText) {
@@ -142,7 +183,15 @@ public class Progress extends ViewGroup {
         }
     }
 
+    /*
+     * @return The height of the progress bar
+     */
     public int getBarHeight() { return barHeight; }
+
+    /*
+     * Sets the height of the progress bar and updates the view
+     * @param newBarHeight The new height
+     */
     public void setBarHeight(int newBarHeight) {
         barHeight = newBarHeight;
         p.barHeight = barHeight;
